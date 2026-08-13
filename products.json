@@ -1,0 +1,445 @@
+{
+  "p1-main": {
+    "grupo": "p1",
+    "ordem": 0,
+    "navLabel": "Visão geral",
+    "categoria": "SACOS KRAFT · DELIVERY",
+    "titulo": "Saco Kraft para Delivery",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📄",
+        "label": "MATERIAL",
+        "valor": "Kraft — pardo natural"
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar"
+      }
+    ],
+    "dica": "💡 Embalagem para retirada e entrega de pedidos."
+  },
+
+  "p2-a": {
+    "grupo": "p2",
+    "ordem": 1,
+    "navLabel": "Acoplado",
+    "categoria": "PAPÉIS ESPECIAIS · ACOPLADO",
+    "titulo": "Papel Acoplado",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🍔",
+        "label": "USO SUGERIDO",
+        "valor": "Embrulho de lanches, hot dog e pastel",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p2-b": {
+    "grupo": "p2",
+    "ordem": 2,
+    "navLabel": "Monolúcido",
+    "categoria": "PAPÉIS ESPECIAIS · MONOLÚCIDO",
+    "titulo": "Papel Monolúcido",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🍟",
+        "label": "USO SUGERIDO",
+        "valor": "Embrulho de lanches e porções",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p2-c": {
+    "grupo": "p2",
+    "ordem": 3,
+    "navLabel": "Bandeja",
+    "categoria": "PAPÉIS ESPECIAIS · BANDEJA",
+    "titulo": "Papel para Bandeja",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🍽️",
+        "label": "USO SUGERIDO",
+        "valor": "Forro de bandejas e cestos",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p2-d": {
+    "grupo": "p2",
+    "ordem": 4,
+    "navLabel": "Alumínio",
+    "categoria": "PAPÉIS ESPECIAIS · ALUMÍNIO",
+    "titulo": "Papel Alumínio",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🔥",
+        "label": "USO SUGERIDO",
+        "valor": "Retenção de temperatura em lanches quentes",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+
+  "p3-main": {
+    "grupo": "p3",
+    "ordem": 0,
+    "navLabel": "Visão geral",
+    "categoria": "GUARDANAPOS ENVELOPADOS",
+    "titulo": "Guardanapo Envelopado",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📄",
+        "label": "MATERIAL",
+        "valor": "Guardanapo unitário, envelopado individualmente"
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar"
+      }
+    ],
+    "dica": "💡 Praticidade e higiene para pedidos de delivery e viagem."
+  },
+
+  "p4-a": {
+    "grupo": "p4",
+    "ordem": 1,
+    "navLabel": "Lacre Adesivo",
+    "categoria": "LACRES · ADESIVO DE SEGURANÇA",
+    "titulo": "Lacre Adesivo",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": "💡 Mostra ao cliente que o pedido chega lacrado e violado somente na entrega."
+  },
+  "p4-b": {
+    "grupo": "p4",
+    "ordem": 2,
+    "navLabel": "Etiqueta Adesiva",
+    "categoria": "ETIQUETAS · ADESIVA PERSONALIZADA",
+    "titulo": "Etiqueta Adesiva Personalizada",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "Vários tamanhos e formatos",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+
+  "p5-main": {
+    "grupo": "p5",
+    "ordem": 0,
+    "navLabel": "Visão geral",
+    "categoria": "CAIXAS DELIVERY DIVERSAS",
+    "titulo": "Caixas para Delivery",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "✨",
+        "label": "MODELOS",
+        "valor": "A definir (ex.: hambúrguer, batata frita, marmitex, doces)",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+
+  "p6-a": {
+    "grupo": "p6",
+    "ordem": 1,
+    "navLabel": "Saco de Talheres",
+    "categoria": "DESCARTÁVEIS · SACO DE TALHERES",
+    "titulo": "Saco de Talheres",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p6-b": {
+    "grupo": "p6",
+    "ordem": 2,
+    "navLabel": "Barreira Gordura",
+    "categoria": "DESCARTÁVEIS · SAQUINHO BARREIRA GORDURA",
+    "titulo": "Saquinho Barreira Gordura",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🍟",
+        "label": "USO SUGERIDO",
+        "valor": "Porções fritas e salgados — barreira contra gordura",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p6-c": {
+    "grupo": "p6",
+    "ordem": 3,
+    "navLabel": "Monolúcido",
+    "categoria": "DESCARTÁVEIS · SAQUINHO MONOLÚCIDO",
+    "titulo": "Saquinho Monolúcido",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "A definir"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+
+  "p7-main": {
+    "grupo": "p7",
+    "ordem": 0,
+    "navLabel": "Visão geral",
+    "categoria": "PRONTA ENTREGA",
+    "titulo": "Itens à Pronta Entrega",
+    "textoSimples": "Itens diversos disponíveis para pronta entrega — consulte estoque e modelos disponíveis.",
+    "dica": ""
+  }
+}

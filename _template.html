@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0c1f1d">
+<meta name="format-detection" content="telephone=no">
+<title>Alternativa Embalagens · Linha Delivery 2026</title>
+<style>
+  /* ============ FONTES ============ */
+  @font-face {
+    font-family: "Niveau Grotesk";
+    font-weight: 300;
+    font-style: normal;
+    src: url(data:font/otf;base64,__FONT_LIGHT_B64__) format("opentype");
+  }
+  @font-face {
+    font-family: "Niveau Grotesk";
+    font-weight: 400;
+    font-style: normal;
+    src: url(data:font/otf;base64,__FONT_REGULAR_B64__) format("opentype");
+  }
+  @font-face {
+    font-family: "Niveau Grotesk";
+    font-weight: 900;
+    font-style: normal;
+    src: url(data:font/otf;base64,__FONT_BLACK_B64__) format("opentype");
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    background: #0c1f1d;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
+    touch-action: manipulation;
+  }
+  /* user-select e touch-callout só onde realmente atrapalha — NÃO globalmente
+     (algumas versões do Android Chrome suprimem 'click' em descendentes de
+     elementos com user-select: none) */
+  h1, h2, h3, p, .step, .pill, .desc, .info-overlay {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    touch-action: manipulation;
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.08);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  button:focus { outline: none; }
+  button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  /* ============ DEBUG OVERLAY ============ */
+  #diag { display: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  /* ============ TOKENS ============ */
+  :root {
+    --brand: #00A499;
+    --brand-dark: #007F73;
+    --tag-grad: linear-gradient(135deg, #4C178C 0%, #BC53DF 100%);
+    --brand-ink: #0c1f1d;
+    --ink: #1a1d24;
+    --ink-soft: #5b6470;
+    --paper: #ffffff;
+    --paper-soft: #f4f6f7;
+    --paper-line: #e7ebed;
+    --tint: #e6f5f2;
+    --whats: #25D366;
+    --whats-dark: #1da851;
+    --serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lift: 0 -8px 28px rgba(0,0,0,0.18);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* ============ APP / SLIDES ============ */
+  #app {
+    width: 100vw;
+    width: 100dvw;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+  }
+  #slides {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  #slides::-webkit-scrollbar { display: none; }
+  .slide {
+    flex: 0 0 100%;
+    width: 100vw;
+    width: 100dvw;
+    height: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ============ COVER SLIDE ============ */
+  .slide.cover .bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+  }
+  .slide.cover .cover-layout {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: calc(16px + var(--safe-top)) 24px calc(28px + var(--safe-bottom));
+  }
+  .logo-bar { display: flex; justify-content: center; align-items: center; }
+  .logo-bar svg, .slide.product .top-bar svg { width: 140px; height: auto; display: block; flex: none; }
+  @media (max-height: 700px) {
+    .logo-bar svg, .slide.product .top-bar svg { width: 118px; }
+  }
+  .slide.cover .cover-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    padding-bottom: 8px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 16px;
+    background: var(--brand);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .pill.soft {
+    background: var(--tint);
+    color: var(--brand-dark);
+  }
+  .slide.cover h1 {
+    font-family: "Niveau Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 0.88;
+    color: #fff;
+  }
+  .slide.cover h1 .h1-light {
+    display: block;
+    font-weight: 300;
+    font-size: clamp(22px, 6vw, 32px);
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  }
+  .slide.cover h1 .h1-bold {
+    display: block;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-size: clamp(48px, 14vw, 76px);
+    text-shadow: 0 2px 18px rgba(0,0,0,0.45);
+  }
+  .slide.cover .tagline {
+    font-size: 15px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.92);
+    max-width: 320px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  }
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 13px 22px;
+    background: #fff;
+    color: var(--brand);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    min-height: 44px;
+    min-width: 190px;
+  }
+  .cta-primary:active { transform: scale(0.97); box-shadow: 0 3px 12px rgba(0,0,0,0.25); }
+  .cta-primary .arrow { font-weight: 400; font-size: 16px; }
+
+  /* ============ PRODUCT SLIDE ============ */
+  .slide.product {
+    background: #0c1f1d;
+  }
+  .slide.product .top-bar {
+    position: absolute;
+    top: calc(env(safe-area-inset-top, 0px) + 14px);
+    left: 0; right: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  .slide.product .top-bar.top-bar--split {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .brand-text {
+    font-family: "Niveau Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.4);
+  }
+  .brand-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .slide.product .bg-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 0;
+  }
+  .slide.product .img-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.5) 58%, rgba(0,0,0,0.88) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  /* Fade reduzido para slides com fundo claro / foto iluminada */
+  .img-veil--light {
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.35) 68%, rgba(0,0,0,0.65) 100%) !important;
+  }
+  /* Paginas com titulo em cima (.info-overlay--top) nao precisam escurecer a base da foto */
+  .img-veil--top-only {
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 100%) !important;
+  }
+  .img-veil--top-only.img-veil--light {
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 100%) !important;
+  }
+  .slide.product .info-overlay {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: calc(92px + var(--safe-bottom));
+    z-index: 2;
+    padding: 0 24px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+  }
+  .info-overlay--top {
+    top: calc(64px + var(--safe-top));
+    bottom: auto;
+  }
+  .info-overlay > * { pointer-events: auto; }
+  .step {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .info-overlay h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: clamp(22px, 7vw, 36px);
+    line-height: 1.08;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    margin-top: 2px;
+  }
+  /* Títulos sempre em branco — a base da foto já tem fade escuro (.img-veil) */
+  /* Exceção: páginas marcadas com --brand usam a cor da marca (fotos de fundo claro) */
+  .info-overlay--brand h2 {
+    color: var(--brand);
+    text-shadow: none;
+  }
+  .info-overlay .desc {
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.92);
+    max-width: 360px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+    display: none;
+  }
+  .info-overlay .pill { display: none; }
+
+  /* ============ HOTSPOTS (reservado p/ quando as fotos finais entrarem) ============ */
+  .hotspot {
+    position: absolute;
+    z-index: 3;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.35), 0 0 0 2px rgba(255,255,255,0.92);
+    transform: translate(-50%, -50%);
+    transition: transform 0.16s ease;
+    cursor: pointer;
+  }
+  .hotspot::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 1.5px solid var(--brand);
+    opacity: 0.55;
+    animation: pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.55; }
+    100% { transform: scale(1.7); opacity: 0; }
+  }
+  .hotspot:active {
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  /* ============ TAGS (pílula + seta) — reservado p/ quando as fotos finais entrarem ============ */
+  .tag {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transform: translate(-50%, -50%);
+  }
+  .tag-pill {
+    background: var(--tag-grad);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    transition: transform 0.16s ease;
+    cursor: pointer;
+  }
+  .tag-pill:active { transform: scale(0.95); }
+  .tag-arrow {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    color: var(--brand);
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.35));
+  }
+  .tag-arrow--white { color: #fff; }
+  /* orientação padrão da seta: aponta p/ cima-esquerda. Modificadores espelham/rotacionam. */
+  .tag-arrow--up-right { transform: scaleX(-1); }
+  .tag-arrow--down-left { transform: scaleY(-1); }
+  .tag-arrow--down-right { transform: scale(-1, -1); }
+
+  /* ============ NAV ARROWS ============ */
+  .nav-row {
+    position: absolute;
+    z-index: 4;
+    left: 0; right: 0;
+    bottom: calc(20px + var(--safe-bottom));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 0 16px;
+    pointer-events: none;
+  }
+  .nav-row > * { pointer-events: auto; }
+  .nav-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    flex-shrink: 0;
+  }
+  .nav-arrow:disabled { opacity: 0.35; }
+  .nav-arrow:active { transform: scale(0.94); }
+  .cta-details {
+    flex: 1;
+    max-width: 320px;
+    min-height: 52px;
+    background: var(--brand);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(21,181,166,0.4);
+    transition: transform 0.16s ease;
+  }
+  .cta-details:active { transform: scale(0.97); }
+
+  /* ============ INDICATORS ============ */
+  #indicators {
+    position: absolute;
+    bottom: calc(6px + var(--safe-bottom));
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .dot {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    transition: width 0.25s ease, background 0.25s ease;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .dot::before {
+    content: "";
+    position: absolute;
+    inset: -9px;
+  }
+  .dot.active {
+    width: 22px;
+    background: var(--brand);
+  }
+  .slide.cover ~ #indicators .dot,
+  .indicators-light .dot { background: rgba(255,255,255,0.45); }
+  .indicators-light .dot.active { background: #fff; }
+
+  /* ============ BOTTOM SHEET ============ */
+  #sheet {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  #sheet.open { pointer-events: auto; visibility: visible; }
+  #sheet .backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+  }
+  #sheet.open .backdrop { opacity: 1; }
+  #sheet .panel {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 22px 22px 0 0;
+    max-height: 90vh;
+    max-height: 90dvh;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 0.32s cubic-bezier(.2,.8,.25,1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lift);
+    overflow: hidden;
+  }
+  #sheet.open .panel { transform: translate3d(0, 0, 0); }
+  .sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: #d4d8db;
+    border-radius: 999px;
+    margin: 10px auto 6px;
+    flex-shrink: 0;
+  }
+  .sheet-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 18px 8px;
+    flex-shrink: 0;
+  }
+  .sheet-nav.hidden { display: none; }
+  .sheet-nav-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--paper-soft);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.16s ease, background 0.16s ease;
+  }
+  .sheet-nav-btn:active { transform: scale(0.92); background: var(--paper-line); }
+  .sheet-nav-btn:disabled { opacity: 0.3; }
+  .sheet-counter {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+    flex: 1;
+  }
+  .sheet-body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 12px 22px 16px;
+  }
+  .sheet-body h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 10px 0 2px;
+    background: linear-gradient(90deg, #b08b3a 0%, #2c2c2c 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sheet-sub { font-style: italic; color: var(--brand); font-size: 13px; margin: 0 0 10px; }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .spec {
+    background: var(--paper-soft);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .spec.full { grid-column: 1 / -1; }
+  .spec-grid-wrap { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+  .spec-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; }
+  .spec-col { display: flex; flex-direction: column; gap: 8px; justify-content: space-between; }
+  .spec .lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .spec .val {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: pre-line;
+  }
+  .simple-text {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .tip {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: var(--tint);
+    border-left: 3px solid var(--brand);
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--brand-ink);
+  }
+  .sheet-actions {
+    padding: 12px 22px calc(20px + var(--safe-bottom));
+    border-top: 1px solid var(--paper-line);
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .btn-whats {
+    background: var(--whats);
+    color: #fff;
+    padding: 16px 22px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+  }
+  .btn-whats:active { background: var(--whats-dark); }
+  .btn-close {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 14px 22px;
+    border-radius: 14px;
+    border: 1px solid var(--paper-line);
+    font-weight: 600;
+    font-size: 15px;
+    min-height: 50px;
+  }
+  .btn-close:active { background: var(--paper-soft); }
+
+  /* small screens tweaks */
+  @media (max-height: 700px) {
+    .slide.cover h1 { font-size: 56px; }
+    .sheet-body h3 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Diagnostico visual. Mostra status do JS. Se aparecer vermelho "JS: ?"
+     significa que o script nao rodou. Verde "JS: OK" = tudo certo. -->
+<div id="diag" onclick="this.style.display='none'">JS: ?</div>
+
+<div id="app">
+  <div id="slides">
+
+    <!-- ========= SLIDE 0: CAPA ========= -->
+    <section class="slide cover" data-slide="0">
+      <img class="bg" src="__CAPA_DATAURI__" alt="Linha Delivery Alternativa Embalagens">
+      <div class="cover-layout">
+        <div class="cover-content">
+          <button class="cta-primary" data-action="next" aria-label="Explorar catálogo">
+            <span class="arrow">→</span><span>Clique aqui para iniciar!</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 1: SACOS KRAFT ========= -->
+    <section class="slide product" data-slide="1">
+      <img class="bg-photo" src="__P1_DATAURI__" alt="Sacos Kraft para Delivery">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">1 DE 7</span>
+        <h2>__TITLE_1__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p1-main"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 2: PAPÉIS ESPECIAIS (Acoplado, Monolúcido, Bandeja, Alumínio) =========
+         Grupo com 4 itens (p2-a..p2-d). Quando a foto final entrar, dá pra adicionar
+         tags/pílulas apontando pra cada tipo direto na imagem (ver exemplo no catálogo
+         Lojista, slide 1 — classes .tag / .tag-pill / .tag-arrow já estão prontas no CSS).
+         Por enquanto a navegação entre os 4 é feita pelas setas dentro da bandeja (sheet). -->
+    <section class="slide product" data-slide="2">
+      <img class="bg-photo" src="__P2_DATAURI__" alt="Papéis Especiais — Acoplado, Monolúcido, Bandeja e Alumínio">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">2 DE 7</span>
+        <h2>__TITLE_2__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p2-a"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 3: GUARDANAPOS ENVELOPADOS ========= -->
+    <section class="slide product" data-slide="3">
+      <img class="bg-photo" src="__P3_DATAURI__" alt="Guardanapos Envelopados">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">3 DE 7</span>
+        <h2>__TITLE_3__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p3-main"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 4: LACRES E ETIQUETAS ADESIVAS =========
+         Grupo com 2 itens (p4-a Lacre, p4-b Etiqueta). -->
+    <section class="slide product" data-slide="4">
+      <img class="bg-photo" src="__P4_DATAURI__" alt="Lacres e Etiquetas Adesivas">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">4 DE 7</span>
+        <h2>__TITLE_4__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p4-a"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 5: CAIXAS DELIVERY DIVERSAS ========= -->
+    <section class="slide product" data-slide="5">
+      <img class="bg-photo" src="__P5_DATAURI__" alt="Caixas Delivery Diversas">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">5 DE 7</span>
+        <h2>__TITLE_5__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p5-main"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 6: SACOS DE TALHERES, SAQUINHOS BARREIRA GORDURA E MONOLÚCIDO =========
+         Grupo com 3 itens (p6-a Talheres, p6-b Barreira Gordura, p6-c Monolúcido). -->
+    <section class="slide product" data-slide="6">
+      <img class="bg-photo" src="__P6_DATAURI__" alt="Sacos de Talheres, Saquinhos Barreira Gordura e Monolúcido">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">6 DE 7</span>
+        <h2>__TITLE_6__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p6-a"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <!-- ========= SLIDE 7: A PRONTA ENTREGA ========= -->
+    <section class="slide product" data-slide="7">
+      <img class="bg-photo" src="__P7_DATAURI__" alt="Itens à Pronta Entrega">
+      <div class="img-veil img-veil--top-only"></div>
+
+      <div class="info-overlay info-overlay--top">
+        <span class="step">7 DE 7</span>
+        <h2>__TITLE_7__</h2>
+      </div>
+
+      <div class="nav-row">
+        <button class="nav-arrow" data-action="prev" aria-label="Anterior">‹</button>
+        <button class="cta-details" data-product="p7-main"><span>●</span><span>Ver Detalhes</span></button>
+        <button class="nav-arrow" data-action="next" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="indicators" class="indicators-light"></div>
+</div>
+
+<!-- ========= BOTTOM SHEET ========= -->
+<div id="sheet" aria-hidden="true" role="dialog">
+  <div class="backdrop" data-action="close-sheet"></div>
+  <div class="panel">
+    <div class="sheet-handle"></div>
+    <div class="sheet-nav" id="sheet-nav">
+      <button class="sheet-nav-btn" data-action="sheet-prev" aria-label="Produto anterior">‹</button>
+      <span class="sheet-counter" id="sheet-counter">—</span>
+      <button class="sheet-nav-btn" data-action="sheet-next" aria-label="Próximo produto">›</button>
+    </div>
+    <div class="sheet-body" id="sheet-body"></div>
+    <div class="sheet-actions">
+      <button class="btn-whats" id="btn-whats">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.554-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span>Pedir Orçamento no WhatsApp</span>
+      </button>
+      <button class="btn-close" data-action="close-sheet">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ CAPTURA GLOBAL DE ERROS (mostra na tela) ============ */
+(function () {
+  var diag = document.getElementById('diag');
+  function showErr(msg) {
+    if (!diag) return;
+    diag.className = 'err';
+    diag.textContent = 'ERRO: ' + msg;
+  }
+  window.addEventListener('error', function (ev) {
+    showErr((ev.message || 'desconhecido') + (ev.lineno ? ' @L' + ev.lineno : ''));
+  });
+  window.addEventListener('unhandledrejection', function (ev) {
+    showErr('promise: ' + (ev.reason && ev.reason.message ? ev.reason.message : String(ev.reason)));
+  });
+})();
+
+(function() {
+  'use strict';
+
+  /* ============ CONFIGURAÇÃO ============ */
+  const WHATSAPP_NUMERO = "5548984316363"; // formato internacional, sem +, sem espaços
+  const WHATSAPP_MSG_PREFIX = "Olá! Vim pelo catálogo Delivery e gostaria de um orçamento de";
+
+  /* ============ DADOS DOS PRODUTOS ============ */
+  /* grupo = produtos navegáveis dentro da mesma sheet. ordem = posição.
+     Fonte editável: products.json (injetado no build via __PRODUTOS_JSON__). */
+  const PRODUTOS = __PRODUTOS_JSON__;
+
+  /* Índice: para cada grupo, lista ordenada dos ids */
+  const GRUPOS = (() => {
+    const g = {};
+    Object.entries(PRODUTOS).forEach(([id, p]) => {
+      if (!p.grupo) return;
+      g[p.grupo] = g[p.grupo] || [];
+      g[p.grupo].push(id);
+    });
+    Object.keys(g).forEach(k => {
+      g[k].sort((a, b) => (PRODUTOS[a].ordem || 0) - (PRODUTOS[b].ordem || 0));
+    });
+    return g;
+  })();
+
+  /* ============ ESTADO ============ */
+  const slidesEl = document.getElementById('slides');
+  const sheetEl = document.getElementById('sheet');
+  const sheetBody = document.getElementById('sheet-body');
+  const sheetNav = document.getElementById('sheet-nav');
+  const sheetCounter = document.getElementById('sheet-counter');
+  const btnWhats = document.getElementById('btn-whats');
+  const indicatorsEl = document.getElementById('indicators');
+  const slideEls = Array.from(document.querySelectorAll('.slide'));
+  let current = 0;
+  let activeProductId = "p1-main";
+
+  /* ============ INDICADORES ============ */
+  function buildIndicators() {
+    indicatorsEl.innerHTML = '';
+    slideEls.forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('role', 'button');
+      d.setAttribute('aria-label', 'Ir para página ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      indicatorsEl.appendChild(d);
+    });
+  }
+  function updateIndicators(i) {
+    const dots = indicatorsEl.querySelectorAll('.dot');
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }
+  buildIndicators();
+
+  /* ============ LEMBRAR ÚLTIMA PÁGINA (sobrevive a refresh) ============ */
+  const LAST_SLIDE_KEY = 'catalogoDeliveryAlternativa_lastSlide';
+  function saveLastSlide(idx) {
+    try { localStorage.setItem(LAST_SLIDE_KEY, String(idx)); } catch (e) {}
+  }
+  function restoreLastSlide() {
+    let idx = 0;
+    try { idx = parseInt(localStorage.getItem(LAST_SLIDE_KEY), 10) || 0; } catch (e) {}
+    idx = Math.max(0, Math.min(slideEls.length - 1, idx));
+    if (idx > 0) {
+      slidesEl.scrollLeft = idx * slidesEl.clientWidth;
+      current = idx;
+      updateIndicators(idx);
+    }
+  }
+  restoreLastSlide();
+
+  /* ============ DETECTAR SLIDE ATIVO VIA SCROLL ============ */
+  let scrollTimer = null;
+  slidesEl.addEventListener('scroll', () => {
+    if (scrollTimer) cancelAnimationFrame(scrollTimer);
+    scrollTimer = requestAnimationFrame(() => {
+      const idx = Math.round(slidesEl.scrollLeft / slidesEl.clientWidth);
+      if (idx !== current) {
+        current = idx;
+        updateIndicators(idx);
+      }
+      saveLastSlide(idx);
+    });
+  }, { passive: true });
+
+  /* ============ NAVEGAÇÃO PROGRAMÁTICA ============ */
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(slideEls.length - 1, idx));
+    slidesEl.scrollTo({ left: idx * slidesEl.clientWidth, behavior: 'smooth' });
+  }
+
+  /* ============ BOTTOM SHEET ============ */
+  function renderSheetContent(productId) {
+    const p = PRODUTOS[productId];
+    if (!p) { console.warn('Produto não encontrado:', productId); return; }
+    activeProductId = productId;
+
+    const renderSpec = s => `<div class="spec full"><div class="lbl"><span>${s.icone || ''}</span><span>${escapeHtml(s.label)}</span></div><div class="val">${escapeHtml(s.valor)}</div></div>`;
+    const hasLeft = (p.specs || []).some(s => s.side === 'left');
+    let specsHtml;
+    if (p.textoSimples) {
+      specsHtml = `<p class="simple-text">${escapeHtml(p.textoSimples)}</p>`;
+    } else if (hasLeft) {
+      const topSpecs  = (p.specs || []).filter(s => s.full);
+      const leftSpecs = (p.specs || []).filter(s => s.side === 'left');
+      const rightSpecs= (p.specs || []).filter(s => s.side !== 'left' && !s.full);
+      const topHtml   = topSpecs.map(renderSpec).join('');
+      const colsHtml  = `<div class="spec-cols"><div class="spec-col">${leftSpecs.map(renderSpec).join('')}</div><div class="spec-col">${rightSpecs.map(renderSpec).join('')}</div></div>`;
+      specsHtml = `<div class="spec-grid-wrap">${topHtml}${colsHtml}</div>`;
+    } else {
+      specsHtml = '<div class="spec-grid">';
+      (p.specs || []).forEach(s => {
+        const cls = s.full ? 'spec full' : 'spec';
+        specsHtml += `<div class="${cls}"><div class="lbl"><span>${s.icone || ''}</span><span>${escapeHtml(s.label)}</span></div><div class="val">${escapeHtml(s.valor)}</div></div>`;
+      });
+      specsHtml += '</div>';
+    }
+
+    const dicaHtml = p.dica ? `<div class="tip">${escapeHtml(p.dica)}</div>` : '';
+
+    const subHtml = p.subtitulo ? `<p class="sheet-sub">${escapeHtml(p.subtitulo)}</p>` : '';
+    sheetBody.innerHTML = `
+      <span class="pill soft">${escapeHtml(p.categoria || '')}</span>
+      <h3>${escapeHtml(p.titulo || '')}</h3>
+      ${subHtml}
+      ${specsHtml}
+      ${dicaHtml}
+    `;
+    sheetBody.scrollTop = 0;
+
+    // Atualiza nav do sheet (prev/next + contador)
+    updateSheetNav(productId);
+  }
+
+  function updateSheetNav(productId) {
+    const p = PRODUTOS[productId];
+    if (!p || !p.grupo) { sheetNav.classList.add('hidden'); return; }
+    const ids = GRUPOS[p.grupo] || [];
+    if (ids.length <= 1) { sheetNav.classList.add('hidden'); return; }
+    sheetNav.classList.remove('hidden');
+    const idx = ids.indexOf(productId);
+    const total = ids.length;
+    const label = p.navLabel || p.titulo || '';
+    sheetCounter.textContent = `${label} · ${idx + 1} de ${total}`;
+    const prevBtn = sheetNav.querySelector('[data-action="sheet-prev"]');
+    const nextBtn = sheetNav.querySelector('[data-action="sheet-next"]');
+    prevBtn.disabled = (idx === 0);
+    nextBtn.disabled = (idx === total - 1);
+  }
+
+  function navigateSheet(direction) {
+    const p = PRODUTOS[activeProductId];
+    if (!p || !p.grupo) return;
+    const ids = GRUPOS[p.grupo] || [];
+    const idx = ids.indexOf(activeProductId);
+    const nextIdx = idx + direction;
+    if (nextIdx < 0 || nextIdx >= ids.length) return;
+    renderSheetContent(ids[nextIdx]);
+  }
+
+  function openSheet(productId) {
+    renderSheetContent(productId);
+    sheetEl.classList.add('open');
+    sheetEl.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSheet() {
+    sheetEl.classList.remove('open');
+    sheetEl.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  /* ============ HANDLER ÚNICO ============ */
+  function handleTap(el) {
+    const action = el.getAttribute('data-action');
+    const product = el.getAttribute('data-product');
+    if (action === 'next') { goTo(current + 1); return; }
+    if (action === 'prev') { goTo(current - 1); return; }
+    if (action === 'close-sheet') { closeSheet(); return; }
+    if (action === 'sheet-prev') { navigateSheet(-1); return; }
+    if (action === 'sheet-next') { navigateSheet(1); return; }
+    if (product) { openSheet(product); return; }
+  }
+
+  /* ============ LISTENERS DIRETOS EM CADA BOTÃO ============ */
+  /* Mais robusto que delegação global — alguns navegadores mobile
+     (especialmente WhatsApp in-app) tem comportamento estranho com bubbling */
+  function bindAll() {
+    const els = document.querySelectorAll('[data-action], [data-product]');
+    let bound = 0;
+    els.forEach(function (el) {
+      const fire = function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        handleTap(el);
+      };
+      el.addEventListener('click', fire, false);
+      // Backup: alguns navegadores suprimem 'click' apos pequeno movimento
+      // do dedo. pointerup pega o tap mesmo nesses casos.
+      if (window.PointerEvent) {
+        el.addEventListener('pointerup', function (ev) {
+          if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+        }, false);
+      }
+      bound++;
+    });
+    return bound;
+  }
+  const bindCount = bindAll();
+
+  /* ============ WHATSAPP ============ */
+  btnWhats.addEventListener('click', function () {
+    const p = PRODUTOS[activeProductId] || PRODUTOS["p1-main"];
+    const titulo = (p && p.titulo) ? p.titulo : 'um produto do catálogo';
+    const msg = WHATSAPP_MSG_PREFIX + ' ' + titulo + '.';
+    const url = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  });
+
+  /* ============ FECHAR SHEET COM ESC ============ */
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && sheetEl.classList.contains('open')) closeSheet();
+  });
+
+  /* ============ AJUSTE 100dvh FALLBACK ============ */
+  function setVh() {
+    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+  }
+  setVh();
+  window.addEventListener('resize', setVh);
+  window.addEventListener('orientationchange', function () { setTimeout(setVh, 120); });
+
+  /* ============ SUCESSO: marca o diagnostico como OK ============ */
+  const diag = document.getElementById('diag');
+  if (diag) {
+    diag.className = 'ok';
+    diag.textContent = 'JS: OK (' + bindCount + ' bts)';
+    // Some mobile browsers (especialmente WhatsApp in-app) deixam o badge visível.
+    // O usuário pode tocar nele pra fechar (ja tem onclick no HTML).
+    setTimeout(function () {
+      if (diag.className === 'ok') diag.style.display = 'none';
+    }, 4000);
+  }
+
+})();
+</script>
+</body>
+</html>
