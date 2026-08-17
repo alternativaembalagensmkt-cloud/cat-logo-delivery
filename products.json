@@ -3,31 +3,31 @@
     "grupo": "p1",
     "ordem": 0,
     "navLabel": "Visão geral",
-    "categoria": "SACOS KRAFT · DELIVERY",
-    "titulo": "Saco Kraft para Delivery",
+    "categoria": "SACOS KRAFT DELIVERY · 70G",
+    "titulo": "Saco Kraft Delivery 70g",
     "specs": [
       {
         "icone": "📦",
         "label": "QTD. MÍNIMA",
-        "valor": "A definir",
+        "valor": "5.000 unidades",
         "full": true
       },
       {
         "icone": "🖌️",
         "label": "IMPRESSÃO",
-        "valor": "A definir",
+        "valor": "Máximo 3 cores",
         "full": true
       },
       {
         "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
+        "label": "MEDIDAS PADRÃO",
+        "valor": "14×30×10\n18×30×10\n22×29×11,5\n24×34×14,5\n24×39×14,5\n28×39×14,5\n31×34×16,5\n31×33×18\n31×40×18",
         "full": true
       },
       {
         "icone": "📄",
         "label": "MATERIAL",
-        "valor": "Kraft — pardo natural"
+        "valor": "Kraft 70g"
       },
       {
         "icone": "🚚",
@@ -35,7 +35,7 @@
         "valor": "A consultar"
       }
     ],
-    "dica": "💡 Embalagem para retirada e entrega de pedidos."
+    "dica": "💡 Outras medidas sob consulta. Custo de clichê de impressão cobrado no primeiro pedido."
   },
 
   "p2-a": {
@@ -48,7 +48,7 @@
       {
         "icone": "📦",
         "label": "QTD. MÍNIMA",
-        "valor": "A definir"
+        "valor": "40 kg"
       },
       {
         "icone": "🖌️",
@@ -57,8 +57,8 @@
       },
       {
         "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
+        "label": "TAMANHO",
+        "valor": "Escolha a medida que deseja",
         "full": true
       },
       {
@@ -74,87 +74,11 @@
         "full": true
       }
     ],
-    "dica": ""
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
   },
   "p2-b": {
     "grupo": "p2",
     "ordem": 2,
-    "navLabel": "Monolúcido",
-    "categoria": "PAPÉIS ESPECIAIS · MONOLÚCIDO",
-    "titulo": "Papel Monolúcido",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir"
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir"
-      },
-      {
-        "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🍟",
-        "label": "USO SUGERIDO",
-        "valor": "Embrulho de lanches e porções",
-        "full": true
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar",
-        "full": true
-      }
-    ],
-    "dica": ""
-  },
-  "p2-c": {
-    "grupo": "p2",
-    "ordem": 3,
-    "navLabel": "Bandeja",
-    "categoria": "PAPÉIS ESPECIAIS · BANDEJA",
-    "titulo": "Papel para Bandeja",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir"
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir"
-      },
-      {
-        "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🍽️",
-        "label": "USO SUGERIDO",
-        "valor": "Forro de bandejas e cestos",
-        "full": true
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar",
-        "full": true
-      }
-    ],
-    "dica": ""
-  },
-  "p2-d": {
-    "grupo": "p2",
-    "ordem": 4,
     "navLabel": "Alumínio",
     "categoria": "PAPÉIS ESPECIAIS · ALUMÍNIO",
     "titulo": "Papel Alumínio",
@@ -162,7 +86,7 @@
       {
         "icone": "📦",
         "label": "QTD. MÍNIMA",
-        "valor": "A definir"
+        "valor": "40 kg"
       },
       {
         "icone": "🖌️",
@@ -171,8 +95,8 @@
       },
       {
         "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
+        "label": "TAMANHO",
+        "valor": "Escolha a medida que deseja",
         "full": true
       },
       {
@@ -188,191 +112,19 @@
         "full": true
       }
     ],
-    "dica": ""
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
   },
-
-  "p3-main": {
-    "grupo": "p3",
-    "ordem": 0,
-    "navLabel": "Visão geral",
-    "categoria": "GUARDANAPOS ENVELOPADOS",
-    "titulo": "Guardanapo Envelopado",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "📄",
-        "label": "MATERIAL",
-        "valor": "Guardanapo unitário, envelopado individualmente"
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar"
-      }
-    ],
-    "dica": "💡 Praticidade e higiene para pedidos de delivery e viagem."
-  },
-
-  "p4-a": {
-    "grupo": "p4",
-    "ordem": 1,
-    "navLabel": "Lacre Adesivo",
-    "categoria": "LACRES · ADESIVO DE SEGURANÇA",
-    "titulo": "Lacre Adesivo",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir"
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir"
-      },
-      {
-        "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar",
-        "full": true
-      }
-    ],
-    "dica": "💡 Mostra ao cliente que o pedido chega lacrado e violado somente na entrega."
-  },
-  "p4-b": {
-    "grupo": "p4",
-    "ordem": 2,
-    "navLabel": "Etiqueta Adesiva",
-    "categoria": "ETIQUETAS · ADESIVA PERSONALIZADA",
-    "titulo": "Etiqueta Adesiva Personalizada",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir"
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir"
-      },
-      {
-        "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "Vários tamanhos e formatos",
-        "full": true
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar",
-        "full": true
-      }
-    ],
-    "dica": ""
-  },
-
-  "p5-main": {
-    "grupo": "p5",
-    "ordem": 0,
-    "navLabel": "Visão geral",
-    "categoria": "CAIXAS DELIVERY DIVERSAS",
-    "titulo": "Caixas para Delivery",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "✨",
-        "label": "MODELOS",
-        "valor": "A definir (ex.: hambúrguer, batata frita, marmitex, doces)",
-        "full": true
-      },
-      {
-        "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar",
-        "full": true
-      }
-    ],
-    "dica": ""
-  },
-
-  "p6-a": {
-    "grupo": "p6",
-    "ordem": 1,
-    "navLabel": "Saco de Talheres",
-    "categoria": "DESCARTÁVEIS · SACO DE TALHERES",
-    "titulo": "Saco de Talheres",
-    "specs": [
-      {
-        "icone": "📦",
-        "label": "QTD. MÍNIMA",
-        "valor": "A definir"
-      },
-      {
-        "icone": "🖌️",
-        "label": "IMPRESSÃO",
-        "valor": "A definir"
-      },
-      {
-        "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
-        "full": true
-      },
-      {
-        "icone": "🚚",
-        "label": "PRAZO",
-        "valor": "A consultar",
-        "full": true
-      }
-    ],
-    "dica": ""
-  },
-  "p6-b": {
-    "grupo": "p6",
-    "ordem": 2,
+  "p2-c": {
+    "grupo": "p2",
+    "ordem": 3,
     "navLabel": "Barreira Gordura",
-    "categoria": "DESCARTÁVEIS · SAQUINHO BARREIRA GORDURA",
-    "titulo": "Saquinho Barreira Gordura",
+    "categoria": "PAPÉIS ESPECIAIS · BARREIRA GORDURA",
+    "titulo": "Papel Barreira Gordura",
     "specs": [
       {
         "icone": "📦",
         "label": "QTD. MÍNIMA",
-        "valor": "A definir"
+        "valor": "40 kg"
       },
       {
         "icone": "🖌️",
@@ -381,8 +133,8 @@
       },
       {
         "icone": "📏",
-        "label": "TAMANHOS",
-        "valor": "A definir",
+        "label": "TAMANHO",
+        "valor": "Escolha a medida que deseja",
         "full": true
       },
       {
@@ -398,19 +150,19 @@
         "full": true
       }
     ],
-    "dica": ""
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
   },
-  "p6-c": {
-    "grupo": "p6",
-    "ordem": 3,
+  "p2-d": {
+    "grupo": "p2",
+    "ordem": 4,
     "navLabel": "Monolúcido",
-    "categoria": "DESCARTÁVEIS · SAQUINHO MONOLÚCIDO",
-    "titulo": "Saquinho Monolúcido",
+    "categoria": "PAPÉIS ESPECIAIS · MONOLÚCIDO",
+    "titulo": "Papel Monolúcido",
     "specs": [
       {
         "icone": "📦",
         "label": "QTD. MÍNIMA",
-        "valor": "A definir"
+        "valor": "40 kg"
       },
       {
         "icone": "🖌️",
@@ -419,8 +171,342 @@
       },
       {
         "icone": "📏",
-        "label": "TAMANHOS",
+        "label": "TAMANHO",
+        "valor": "Escolha a medida que deseja",
+        "full": true
+      },
+      {
+        "icone": "🥡",
+        "label": "USO SUGERIDO",
+        "valor": "Embrulho de lanches e porções",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
+  },
+  "p2-e": {
+    "grupo": "p2",
+    "ordem": 5,
+    "navLabel": "Seda",
+    "categoria": "PAPÉIS ESPECIAIS · SEDA",
+    "titulo": "Papel Seda",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "40 kg"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHO",
+        "valor": "Escolha a medida que deseja",
+        "full": true
+      },
+      {
+        "icone": "🎁",
+        "label": "USO SUGERIDO",
+        "valor": "Acabamento e proteção interna de embalagens",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
+  },
+  "p2-f": {
+    "grupo": "p2",
+    "ordem": 6,
+    "navLabel": "Bandeja",
+    "categoria": "PAPÉIS ESPECIAIS · BANDEJA",
+    "titulo": "Papel Bandeja",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "40 kg"
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir"
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHO",
+        "valor": "Escolha a medida que deseja",
+        "full": true
+      },
+      {
+        "icone": "🍽️",
+        "label": "USO SUGERIDO",
+        "valor": "Forro de bandejas e cestos",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
+  },
+
+  "p3-main": {
+    "grupo": "p3",
+    "ordem": 0,
+    "navLabel": "Visão geral",
+    "categoria": "GUARDANAPOS ENVELOPADOS",
+    "titulo": "Guardanapo Envelopado",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "10 caixas — 2.000 sachês por caixa (20.000 un.)",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
         "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "MEDIDA PADRÃO",
+        "valor": "15×29 — folha dupla individual",
+        "full": true
+      },
+      {
+        "icone": "📄",
+        "label": "MATERIAL",
+        "valor": "Guardanapo unitário, envelopado individualmente"
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar"
+      }
+    ],
+    "dica": "💡 Custo de clichê de impressão cobrado no primeiro pedido."
+  },
+
+  "p4-a": {
+    "grupo": "p4",
+    "ordem": 1,
+    "navLabel": "Lacre Adesivo",
+    "categoria": "LACRE DE SEGURANÇA",
+    "titulo": "Lacre Adesivo de Segurança",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "10.000 unidades",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "MEDIDAS PADRÃO",
+        "valor": "4×10 retangular\n3×10 retangular\n5cm redonda\n4cm redonda\n9cm redonda",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": "💡 Outras medidas sob consulta. Mostra ao cliente que o pedido chega lacrado e violado somente na entrega."
+  },
+  "p4-b": {
+    "grupo": "p4",
+    "ordem": 2,
+    "navLabel": "Etiqueta Adesiva",
+    "categoria": "ETIQUETA ADESIVA",
+    "titulo": "Etiqueta Adesiva Personalizada",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "10.000 unidades",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "MEDIDAS PADRÃO",
+        "valor": "4×10 retangular\n3×10 retangular\n5cm redonda\n4cm redonda\n9cm redonda",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": "💡 Outras medidas sob consulta."
+  },
+
+  "p5-main": {
+    "grupo": "p5",
+    "ordem": 0,
+    "navLabel": "Visão geral",
+    "categoria": "CAIXAS DELIVERY",
+    "titulo": "Caixas para Delivery",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "1.000/2.000 unidades por tamanho ou modelo",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "✨",
+        "label": "MODELOS",
+        "valor": "Caixa de Lanches\nCaixa de Hot Dog\nCaixa de Pizza\nCaixa de Sushi\nCaixa de Batata Frita\nCaixa de Porções\nCaixa Bandeja",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "Diversos modelos e medidas — a consultar",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+
+  "p6-a": {
+    "grupo": "p6",
+    "ordem": 1,
+    "navLabel": "Lanches",
+    "categoria": "SACOS · PARA LANCHES",
+    "titulo": "Saco para Lanches",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "20.000 unidades",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "Consulte as medidas ideais para você",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p6-b": {
+    "grupo": "p6",
+    "ordem": 2,
+    "navLabel": "Batata Frita",
+    "categoria": "SACOS · PARA BATATA FRITA",
+    "titulo": "Saco para Batata Frita",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "20.000 unidades",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "Consulte as medidas ideais para você",
+        "full": true
+      },
+      {
+        "icone": "🚚",
+        "label": "PRAZO",
+        "valor": "A consultar",
+        "full": true
+      }
+    ],
+    "dica": ""
+  },
+  "p6-c": {
+    "grupo": "p6",
+    "ordem": 3,
+    "navLabel": "Talheres",
+    "categoria": "SACOS · PARA TALHERES",
+    "titulo": "Saco para Talheres",
+    "specs": [
+      {
+        "icone": "📦",
+        "label": "QTD. MÍNIMA",
+        "valor": "20.000 unidades",
+        "full": true
+      },
+      {
+        "icone": "🖌️",
+        "label": "IMPRESSÃO",
+        "valor": "A definir",
+        "full": true
+      },
+      {
+        "icone": "📏",
+        "label": "TAMANHOS",
+        "valor": "Consulte as medidas ideais para você",
         "full": true
       },
       {
