@@ -1,0 +1,51 @@
+name: Build catálogo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_template.html'
+      - 'products.json'
+      - 'slides.json'
+      - 'build.js'
+      - 'webp/**'
+      - 'fonts/**'
+      - 'LOGO HORIZONTAL - B.svg'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: build-catalogo
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar index.html
+        run: node build.js
+
+      - name: Commitar index.html atualizado
+        run: |
+          git config user.name "catalogo-bot"
+          git config user.email "actions@github.com"
+          if ! git diff --quiet -- index.html; then
+            git add index.html
+            git commit -m "Auto-build: atualiza index.html [skip ci]"
+            git push
+          else
+            echo "index.html sem mudanças, nada pra commitar."
+          fi

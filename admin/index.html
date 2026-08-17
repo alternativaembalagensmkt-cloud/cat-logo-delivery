@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · Catálogo Delivery Alternativa Embalagens</title>
+<style>
+  :root {
+    --brand: #00A499;
+    --brand-dark: #007F73;
+    --ink: #1a1d24;
+    --ink-soft: #5b6470;
+    --paper: #ffffff;
+    --paper-soft: #f4f6f7;
+    --paper-line: #e7ebed;
+    --danger: #c0392b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--paper-soft);
+    color: var(--ink);
+  }
+  header {
+    background: var(--brand);
+    color: #fff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  header h1 { font-size: 17px; margin: 0; font-weight: 700; }
+  header .sub { font-size: 12px; opacity: 0.9; }
+  #logoutBtn {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 80px; }
+  .page-nav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--paper);
+    border-bottom: 1px solid var(--paper-line);
+    display: flex;
+    gap: 6px;
+    padding: 10px 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .page-nav button {
+    flex-shrink: 0;
+    border: 1px solid var(--paper-line);
+    background: var(--paper-soft);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .page-nav button.active {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+  }
+  #loginScreen { max-width: 480px; margin: 60px auto; padding: 0 16px; }
+  #loginScreen h2 { font-size: 20px; margin-bottom: 8px; }
+  #loginScreen p { color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+  #loginScreen ol { color: var(--ink-soft); font-size: 14px; line-height: 1.8; padding-left: 20px; }
+  #loginScreen code { background: var(--paper-soft); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--paper-line);
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+  button.primary {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+  }
+  button.primary:active { background: var(--brand-dark); }
+  button.primary:disabled { opacity: 0.5; cursor: default; }
+  #loginError { color: var(--danger); font-size: 13px; margin-top: 8px; display: none; }
+
+  .card {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .card h3 {
+    font-size: 15px;
+    margin: 0 0 4px;
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .card .step-label { font-size: 11px; color: var(--ink-soft); margin-bottom: 12px; }
+  .photo-row { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .photo-row img {
+    width: 72px; height: 72px; object-fit: cover; border-radius: 10px;
+    background: var(--paper-soft); flex-shrink: 0;
+  }
+  .photo-row .photo-actions { flex: 1; }
+  .photo-row input[type="file"] { font-size: 12px; }
+  .photo-status { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
+
+  label.field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin: 12px 0 4px;
+  }
+  input.field, textarea.field {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--paper-line);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  textarea.field { resize: vertical; min-height: 40px; }
+
+  .product-block {
+    border-top: 1px solid var(--paper-line);
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+  .product-block:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+  .product-block .product-name { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+
+  .spec-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
+  .spec-row .spec-lbl {
+    width: 120px; flex-shrink: 0; font-size: 11px; color: var(--ink-soft);
+    padding-top: 10px; text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .spec-row textarea.field { flex: 1; }
+
+  .save-row { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+  button.save-btn {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.save-btn:active { background: var(--brand-dark); }
+  button.save-btn:disabled { opacity: 0.5; cursor: default; }
+  .save-status { font-size: 12px; color: var(--ink-soft); }
+  .save-status.ok { color: var(--brand-dark); font-weight: 600; }
+  .save-status.err { color: var(--danger); font-weight: 600; }
+
+  #loadingScreen { text-align: center; padding: 80px 20px; color: var(--ink-soft); }
+  .hidden { display: none !important; }
+  .note {
+    background: #fff8e6;
+    border: 1px solid #f0d98c;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #7a5c00;
+    margin-bottom: 18px;
+  }
+</style>
+</head>
+<body>
+
+<div id="loginScreen">
+  <h2>Painel do Catálogo Delivery</h2>
+  <p>Pra editar o catálogo você precisa de um token de acesso do GitHub. Ele fica salvo só no seu navegador — ninguém mais vê.</p>
+  <ol>
+    <li>Acesse <code>github.com/settings/tokens?type=beta</code> e entre com sua conta</li>
+    <li>Clique em <b>Generate new token</b></li>
+    <li>Em <b>Repository access</b>, escolha <b>Only select repositories</b> e selecione o repositório <code>cat-logo-delivery</code></li>
+    <li>Em <b>Permissions → Repository permissions</b>, ache <b>Contents</b> e mude pra <b>Read and write</b></li>
+    <li>Clique em <b>Generate token</b> e cole aqui embaixo</li>
+  </ol>
+  <input type="password" id="tokenInput" placeholder="Cole o token aqui (começa com github_pat_...)">
+  <button class="primary" id="loginBtn">Entrar</button>
+  <div id="loginError"></div>
+</div>
+
+<div id="app" class="hidden">
+  <header>
+    <div>
+      <h1>Painel do Catálogo Delivery</h1>
+      <div class="sub" id="repoLabel"></div>
+    </div>
+    <button id="logoutBtn">Sair</button>
+  </header>
+  <nav id="pageNav" class="page-nav"></nav>
+  <main>
+    <div class="note">Mudanças levam ~1 minuto pra aparecer no catálogo publicado depois de salvar.</div>
+    <div id="loadingScreen">Carregando dados do catálogo…</div>
+    <div id="cardsContainer"></div>
+  </main>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ============ CONFIGURAÇÃO ============
+  const OWNER = 'alternativaembalagensmkt-cloud';
+  const REPO = 'cat-logo-delivery';
+  const BRANCH = 'main';
+  const API = 'https://api.github.com';
+  const TOKEN_KEY = 'catalogo_delivery_admin_token';
+  const TOTAL_PAGINAS = 7; // páginas de produto (não conta a capa)
+
+  // Mapeia número do slide -> nome do arquivo em webp/
+  const SLIDE_PHOTOS = {
+    0: 'Capa.webp',
+    1: 'Sacos Kraft.webp',
+    2: 'Papeis Especiais.webp',
+    3: 'Guardanapos Envelopados.webp',
+    4: 'Lacres e Etiquetas.webp',
+    5: 'Caixas Delivery.webp',
+    6: 'Sacos e Saquinhos.webp',
+    7: 'A Pronta Entrega.webp',
+  };
+  const SLIDE_TITLES_FALLBACK = {
+    0: 'Capa',
+  };
+
+  // ============ HELPERS UTF-8 <-> BASE64 ============
+  function utf8ToBase64(str) {
+    const bytes = new TextEncoder().encode(str);
+    let binary = '';
+    bytes.forEach((b) => (binary += String.fromCharCode(b)));
+    return btoa(binary);
+  }
+  function base64ToUtf8(b64) {
+    const binary = atob(b64.replace(/\n/g, ''));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  // ============ CLIENTE GITHUB API ============
+  function ghHeaders(token) {
+    return {
+      Authorization: 'Bearer ' + token,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+    };
+  }
+  async function ghGetFile(token, filePath) {
+    const res = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(filePath)}?ref=${BRANCH}`, {
+      headers: ghHeaders(token),
+    });
+    if (!res.ok) throw new Error(`Falha ao ler ${filePath}: ${res.status}`);
+    const data = await res.json();
+    return { sha: data.sha, text: base64ToUtf8(data.content) };
+  }
+  async function ghGetFileRaw(token, filePath) {
+    const res = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(filePath)}?ref=${BRANCH}`, {
+      headers: ghHeaders(token),
+    });
+    if (!res.ok) throw new Error(`Falha ao ler ${filePath}: ${res.status}`);
+    return res.json(); // { sha, content(base64), ... }
+  }
+  async function ghPutFile(token, filePath, base64Content, sha, message) {
+    const res = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(filePath)}`, {
+      method: 'PUT',
+      headers: { ...ghHeaders(token), 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message,
+        content: base64Content,
+        sha,
+        branch: BRANCH,
+      }),
+    });
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`Falha ao salvar ${filePath}: ${res.status} ${body}`);
+    }
+    return res.json();
+  }
+
+  // ============ ESTADO ============
+  let TOKEN = null;
+  let productsData = null;
+  let productsSha = null;
+  let slidesData = null;
+  let slidesSha = null;
+
+  // ============ LOGIN ============
+  const loginScreen = document.getElementById('loginScreen');
+  const appEl = document.getElementById('app');
+  const tokenInput = document.getElementById('tokenInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const repoLabel = document.getElementById('repoLabel');
+
+  async function tryLogin(token) {
+    loginBtn.disabled = true;
+    loginError.style.display = 'none';
+    try {
+      const res = await fetch(`${API}/repos/${OWNER}/${REPO}`, { headers: ghHeaders(token) });
+      if (!res.ok) throw new Error('Token inválido ou sem acesso a esse repositório (' + res.status + ')');
+      const repoData = await res.json();
+      if (!repoData.permissions || !repoData.permissions.push) {
+        throw new Error('Esse token não tem permissão de escrita nesse repositório.');
+      }
+      localStorage.setItem(TOKEN_KEY, token);
+      TOKEN = token;
+      loginScreen.classList.add('hidden');
+      appEl.classList.remove('hidden');
+      repoLabel.textContent = OWNER + '/' + REPO;
+      await loadAll();
+    } catch (e) {
+      loginError.textContent = e.message;
+      loginError.style.display = 'block';
+    } finally {
+      loginBtn.disabled = false;
+    }
+  }
+
+  loginBtn.addEventListener('click', () => {
+    const t = tokenInput.value.trim();
+    if (!t) return;
+    tryLogin(t);
+  });
+  tokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') loginBtn.click(); });
+
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem(TOKEN_KEY);
+    location.reload();
+  });
+
+  // ============ CARREGAR DADOS ============
+  async function loadAll() {
+    const [prod, sl] = await Promise.all([
+      ghGetFile(TOKEN, 'products.json'),
+      ghGetFile(TOKEN, 'slides.json'),
+    ]);
+    productsData = JSON.parse(prod.text);
+    productsSha = prod.sha;
+    slidesData = JSON.parse(sl.text);
+    slidesSha = sl.sha;
+    renderCards();
+    document.getElementById('loadingScreen').classList.add('hidden');
+  }
+
+  // Agrupa produtos por "grupo" (mesma lógica do catálogo)
+  function buildGroups() {
+    const groups = {}; // grupo -> [ids ordenados]
+    Object.entries(productsData).forEach(([id, p]) => {
+      if (!p.grupo) return;
+      groups[p.grupo] = groups[p.grupo] || [];
+      groups[p.grupo].push(id);
+    });
+    Object.values(groups).forEach((ids) => ids.sort((a, b) => (productsData[a].ordem || 0) - (productsData[b].ordem || 0)));
+    return groups;
+  }
+
+  // ============ RENDERIZAR CARDS ============
+  const cardsContainer = document.getElementById('cardsContainer');
+  const pageNav = document.getElementById('pageNav');
+  const LAST_PAGE_KEY = 'catalogo_delivery_admin_lastpage';
+  let PAGES = []; // [{ slideNum, ids }] ids=null pra Capa
+  let activeSlideNum = 0;
+
+  function el(tag, attrs, children) {
+    const e = document.createElement(tag);
+    if (attrs) for (const k in attrs) {
+      if (k === 'class') e.className = attrs[k];
+      else if (k === 'text') e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    (children || []).forEach((c) => c && e.appendChild(c));
+    return e;
+  }
+
+  function pageLabel(slideNum) {
+    if (SLIDE_TITLES_FALLBACK[slideNum]) return SLIDE_TITLES_FALLBACK[slideNum];
+    const t = slidesData.titles && slidesData.titles[String(slideNum)];
+    return t || ('Página ' + slideNum);
+  }
+
+  function renderCards() {
+    const groups = buildGroups();
+    const grupoOrdem = Object.keys(groups).sort((a, b) => {
+      const na = parseInt(a.replace('p', ''), 10);
+      const nb = parseInt(b.replace('p', ''), 10);
+      return na - nb;
+    });
+
+    PAGES = [{ slideNum: 0, ids: null }];
+    grupoOrdem.forEach((grupo) => {
+      PAGES.push({ slideNum: parseInt(grupo.replace('p', ''), 10), ids: groups[grupo] });
+    });
+
+    const saved = parseInt(localStorage.getItem(LAST_PAGE_KEY), 10);
+    activeSlideNum = PAGES.some((pg) => pg.slideNum === saved) ? saved : 0;
+
+    renderNav();
+    renderActivePage();
+  }
+
+  function renderNav() {
+    pageNav.innerHTML = '';
+    PAGES.forEach((pg) => {
+      const btn = el('button', { text: pageLabel(pg.slideNum) });
+      if (pg.slideNum === activeSlideNum) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        activeSlideNum = pg.slideNum;
+        localStorage.setItem(LAST_PAGE_KEY, String(activeSlideNum));
+        renderNav();
+        renderActivePage();
+      });
+      pageNav.appendChild(btn);
+    });
+  }
+
+  function renderActivePage() {
+    cardsContainer.innerHTML = '';
+    const pg = PAGES.find((p) => p.slideNum === activeSlideNum);
+    if (!pg) return;
+    if (pg.ids) {
+      cardsContainer.appendChild(buildCard(pg.slideNum, pg.ids));
+    } else {
+      cardsContainer.appendChild(buildPhotoOnlyCard(pg.slideNum, pageLabel(pg.slideNum)));
+    }
+  }
+
+  function buildPhotoOnlyCard(slideNum, label) {
+    const card = el('div', { class: 'card' });
+    card.appendChild(el('h3', { text: label }));
+    card.appendChild(buildPhotoRow(slideNum));
+    return card;
+  }
+
+  function buildPhotoRow(slideNum) {
+    const filename = SLIDE_PHOTOS[slideNum];
+    const row = el('div', { class: 'photo-row' });
+    const img = el('img', {
+      src: `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/webp/${encodeURIComponent(filename)}`,
+      alt: filename,
+    });
+    const actions = el('div', { class: 'photo-actions' });
+    const input = el('input', { type: 'file', accept: 'image/*' });
+    const status = el('div', { class: 'photo-status', text: '' });
+    input.addEventListener('change', () => handlePhotoUpload(input, filename, img, status));
+    actions.appendChild(el('label', { class: 'field-label', text: 'Trocar foto' }));
+    actions.appendChild(input);
+    actions.appendChild(status);
+    row.appendChild(img);
+    row.appendChild(actions);
+    return row;
+  }
+
+  async function handlePhotoUpload(input, filename, imgEl, statusEl) {
+    const file = input.files[0];
+    if (!file) return;
+    statusEl.textContent = 'Processando imagem…';
+    try {
+      const webpBase64 = await imageFileToWebpBase64(file);
+      statusEl.textContent = 'Enviando…';
+      const current = await ghGetFileRaw(TOKEN, 'webp/' + filename);
+      await ghPutFile(TOKEN, 'webp/' + filename, webpBase64, current.sha, `Admin: atualiza foto ${filename}`);
+      statusEl.textContent = 'Salvo! Publicação em ~1 min.';
+      statusEl.className = 'photo-status ok';
+      imgEl.src = URL.createObjectURL(file);
+    } catch (e) {
+      statusEl.textContent = 'Erro: ' + e.message;
+      statusEl.className = 'photo-status err';
+    }
+  }
+
+  function imageFileToWebpBase64(file) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        const MAX_W = 1080;
+        const scale = Math.min(1, MAX_W / img.width);
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob((blob) => {
+          if (!blob) { reject(new Error('Falha ao converter imagem')); return; }
+          const reader = new FileReader();
+          reader.onload = () => {
+            const dataUrl = reader.result;
+            const base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+            resolve(base64);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        }, 'image/webp', 0.82);
+        URL.revokeObjectURL(url);
+      };
+      img.onerror = reject;
+      img.src = url;
+    });
+  }
+
+  function buildCard(slideNum, productIds) {
+    const card = el('div', { class: 'card' });
+    card.appendChild(el('h3', { text: `Página ${slideNum} de ${TOTAL_PAGINAS}` }));
+
+    // Foto
+    card.appendChild(buildPhotoRow(slideNum));
+
+    // Título do slide (h2)
+    const titleKey = String(slideNum);
+    const hasTitle = slidesData.titles && Object.prototype.hasOwnProperty.call(slidesData.titles, titleKey);
+    if (hasTitle) {
+      card.appendChild(el('label', { class: 'field-label', text: 'Título da página' }));
+      const titleInput = el('input', { class: 'field', type: 'text', value: slidesData.titles[titleKey] });
+      titleInput.addEventListener('input', () => { slidesData.titles[titleKey] = titleInput.value; });
+      card.appendChild(titleInput);
+    }
+
+    // Produtos desse grupo
+    productIds.forEach((id) => {
+      card.appendChild(buildProductBlock(id));
+    });
+
+    // Botão salvar
+    const saveRow = el('div', { class: 'save-row' });
+    const saveBtn = el('button', { class: 'save-btn', text: 'Salvar página ' + slideNum });
+    const saveStatus = el('span', { class: 'save-status' });
+    saveBtn.addEventListener('click', () => saveCard(saveBtn, saveStatus));
+    saveRow.appendChild(saveBtn);
+    saveRow.appendChild(saveStatus);
+    card.appendChild(saveRow);
+
+    return card;
+  }
+
+  function buildProductBlock(id) {
+    const p = productsData[id];
+    const block = el('div', { class: 'product-block' });
+    block.appendChild(el('div', { class: 'product-name', text: p.navLabel || p.titulo || id }));
+
+    // Label do botão (hotspot), se existir
+    if (slidesData.pills && Object.prototype.hasOwnProperty.call(slidesData.pills, id)) {
+      block.appendChild(el('label', { class: 'field-label', text: 'Texto do botão na foto' }));
+      const pillInput = el('input', { class: 'field', type: 'text', value: slidesData.pills[id] });
+      pillInput.addEventListener('input', () => { slidesData.pills[id] = pillInput.value; });
+      block.appendChild(pillInput);
+    }
+
+    block.appendChild(el('label', { class: 'field-label', text: 'Título do produto (na ficha)' }));
+    const tituloInput = el('input', { class: 'field', type: 'text', value: p.titulo || '' });
+    tituloInput.addEventListener('input', () => { p.titulo = tituloInput.value; });
+    block.appendChild(tituloInput);
+
+    block.appendChild(el('label', { class: 'field-label', text: 'Categoria (etiqueta acima do título)' }));
+    const catInput = el('input', { class: 'field', type: 'text', value: p.categoria || '' });
+    catInput.addEventListener('input', () => { p.categoria = catInput.value; });
+    block.appendChild(catInput);
+
+    if (Array.isArray(p.specs)) {
+      block.appendChild(el('label', { class: 'field-label', text: 'Informações' }));
+      p.specs.forEach((spec) => {
+        const row = el('div', { class: 'spec-row' });
+        row.appendChild(el('div', { class: 'spec-lbl', text: spec.label }));
+        const ta = el('textarea', { class: 'field', rows: '1' });
+        ta.value = spec.valor;
+        ta.addEventListener('input', () => { spec.valor = ta.value; });
+        row.appendChild(ta);
+        block.appendChild(row);
+      });
+    }
+
+    if (typeof p.textoSimples === 'string') {
+      block.appendChild(el('label', { class: 'field-label', text: 'Texto (pronta entrega)' }));
+      const ta = el('textarea', { class: 'field', rows: '2' });
+      ta.value = p.textoSimples;
+      ta.addEventListener('input', () => { p.textoSimples = ta.value; });
+      block.appendChild(ta);
+    }
+
+    block.appendChild(el('label', { class: 'field-label', text: 'Dica 💡 (deixe em branco pra não mostrar)' }));
+    const dicaTa = el('textarea', { class: 'field', rows: '2' });
+    dicaTa.value = p.dica || '';
+    dicaTa.addEventListener('input', () => { p.dica = dicaTa.value; });
+    block.appendChild(dicaTa);
+
+    return block;
+  }
+
+  // ============ SALVAR ============
+  async function saveCard(btn, statusEl) {
+    btn.disabled = true;
+    statusEl.textContent = 'Salvando…';
+    statusEl.className = 'save-status';
+    try {
+      const productsText = JSON.stringify(productsData, null, 2) + '\n';
+      const slidesText = JSON.stringify(slidesData, null, 2) + '\n';
+      const productsRes = await ghPutFile(
+        TOKEN, 'products.json', utf8ToBase64(productsText), productsSha,
+        'Admin: atualiza produtos'
+      );
+      productsSha = productsRes.content.sha;
+      const slidesRes = await ghPutFile(
+        TOKEN, 'slides.json', utf8ToBase64(slidesText), slidesSha,
+        'Admin: atualiza títulos e labels'
+      );
+      slidesSha = slidesRes.content.sha;
+      statusEl.textContent = 'Salvo! Publicação em ~1 min.';
+      statusEl.className = 'save-status ok';
+    } catch (e) {
+      statusEl.textContent = 'Erro: ' + e.message;
+      statusEl.className = 'save-status err';
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  // ============ INÍCIO ============
+  const saved = localStorage.getItem(TOKEN_KEY);
+  if (saved) {
+    tryLogin(saved);
+  }
+})();
+</script>
+</body>
+</html>
